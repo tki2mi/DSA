@@ -14,7 +14,7 @@ int plus(int lenA, int lenB, int a[], int b[], int output[]) {
     }
     return digit;
 }
-int subtract(int* lenA, int lenB, int a[], int b[]) {
+int subtract(int *lenA, int lenB, int a[], int b[]) {
     int output[256] = {0};
     int digit = 0;
     for (int i = 0; i < *lenA; i++) {
@@ -28,7 +28,8 @@ int subtract(int* lenA, int lenB, int a[], int b[]) {
     for (int i = 0; i < *lenA; i++) {
         if (output[*lenA - 1 - i] != 0) {
             break;
-        } else {
+        }
+        else {
             digit--;
         }
     }
@@ -37,7 +38,7 @@ int subtract(int* lenA, int lenB, int a[], int b[]) {
     }
     *lenA = digit;
 }
-void multiplyBy2(int* lenA, int a[]) {
+void multiplyBy2(int *lenA, int a[]) {
     int output[256] = {0};
     int digit = 0;
     for (int i = 0; i < *lenA; i++) {
@@ -54,7 +55,7 @@ void multiplyBy2(int* lenA, int a[]) {
     }
     *lenA = digit;
 }
-void dividedBy2(int* lenA, int a[]) {
+void dividedBy2(int *lenA, int a[]) {
     int output[256] = {0};
     int digit = 0;
     for (int i = 0; i < *lenA; i++) {
@@ -73,7 +74,7 @@ void dividedBy2(int* lenA, int a[]) {
     }
     *lenA = digit;
 }
-void swap(int* lenA, int* lenB, int a[], int b[]) {
+void swap(int *lenA, int *lenB, int a[], int b[]) {
     int temp = 0;
     for (int i = 0; i < *lenB; i++) {
         temp = a[i];
@@ -84,15 +85,17 @@ void swap(int* lenA, int* lenB, int a[], int b[]) {
     *lenA = *lenB;
     *lenB = temp;
 }
-void sort(int* lenA, int* lenB, int a[], int b[]) {
+void sort(int *lenA, int *lenB, int a[], int b[]) {
     if (*lenB > *lenA) {
         swap(lenA, lenB, a, b);
         return;
-    } else if(*lenA == *lenB){
+    }
+    else if (*lenA == *lenB) {
         for (int i = 0; i < *lenA; i++) {
             if (a[*lenA - i - 1] > b[*lenB - i - 1]) {
                 return;
-            } else if (a[*lenA - i - 1] < b[*lenB - i - 1]) {
+            }
+            else if (a[*lenA - i - 1] < b[*lenB - i - 1]) {
                 swap(lenA, lenB, a, b);
                 return;
             }
@@ -108,7 +111,8 @@ int input(int input[]) {
             x = getchar();
             if (x >= '0' && x <= '9') {
                 input[i] = x - 48;
-            } else {
+            }
+            else {
                 int temp;
                 for (int j = 0; j < ((i + 1) / 2); j++) {
                     temp = input[j];
@@ -152,9 +156,11 @@ int main() {
             k++;
             dividedBy2(&len1, input1);
             dividedBy2(&len2, input2);
-        } else if (input2[0] % 2 == 0) {
+        }
+        else if (input2[0] % 2 == 0) {
             dividedBy2(&len2, input2);
-        } else if (input1[0] % 2 == 0) {
+        }
+        else if (input1[0] % 2 == 0) {
             dividedBy2(&len1, input1);
         }
         sort(&len1, &len2, input1, input2);
