@@ -1,19 +1,25 @@
 \documentclass[12pt]{article}
-\usepackage{xeCJK}
 \usepackage[margin=1.5cm]{geometry}
+\usepackage{xurl}
+\usepackage{xeCJK}
 \setCJKmainfont{NotoSerifTC-Regular.otf}
 \title{Data Structure and Algorithm HW1}
 \author{R11522709 機械所\, 碩一\, 石翊鵬}
 \begin{document}
 \maketitle
 \section*{1. What if you became a DSA TA?}
-\subsection*{Proof of conjugate 1}
-Consider $f(n)\geq 0$ and $g(n) \geq 0$ that $\lim_{n \to \infty} {\frac{f(n)}{g(n)}} = c$, where $c \in R$\\
-By difinition of limit, there exists $\epsilon > 0$, $n_0 > 0$ such that for all $n > n_0$, \\
+\subsection*{Proof of conjecture 1}
+Consider $f(n)\geq 0$ and $g(n) \geq 0$ that $\lim_{n \to \infty} {\frac{f(n)}{g(n)}} = c$, where $c \in R$\newline
+To prove $\lim_{n \to \infty} {\frac{f(n)}{g(n)}} \geq 0$ for all $n \in R$, we can consider h(n) = 0\newline
+Since \(f(n) \geq 0\) and \(g(n) \geq 0 \) for all \(n\in R\), \(\frac{f(n)}{g(n)} \geq h(n)\) for all \(n\)\newline
+therefore,
+\[\lim_{n \to \infty}{h(n)}\geq \lim_{n \to \infty} {\frac{f(n)}{g(n)}}\]
+\[\lim_{n \to \infty}{h(n)} = 0 \Rightarrow \lim_{n \to \infty} {\frac{f(n)}{g(n)}}=c \geq 0\]
+By difinition of limit, there exists $\epsilon > 0$, $n_0 > 0$ such that for all $n > n_0$, \newline
 \[|\frac{f(n)}{g(n)}-c|<\epsilon\]
 \[-\epsilon < \frac{f(n)}{g(n)} -c < \epsilon\]
 \[-\epsilon + c < \frac{f(n)}{g(n)} < \epsilon + c \]
-In case that $c < \epsilon$
+In case that $0 < c < \epsilon$
 \[-\epsilon + c < 0 < \frac{f(n)}{g(n)} < \epsilon + c \]
 In case that $c \geq \epsilon$
 \[0 \leq -\epsilon + c < \frac{f(n)}{g(n)} < \epsilon + c \]
@@ -21,9 +27,9 @@ In case that $c \geq \epsilon$
 Let $(\epsilon + c) = c_1$
 \[0 \leq f(n) \leq c_1g(n)\]
 which shows $f(n) = O(g(n))$, QED
-\subsection*{1.1}
-Consider $c_1, c_2 >0$\\
-for all $n > 0$\\
+\subsection*{1.1 - all by myself}
+Consider $c_1, c_2 >0$\
+for all $n > 0$\newline
 if
 \[\frac{c_1}{c_2}n \geq 1\]
 then
@@ -39,13 +45,13 @@ that is, for all $n \geq n_0$,
 \[0\leq c_2n^2 \leq c_1n^3\]
 therefore, if
 \[0 \leq f(x) \leq c_3n^2\]
-for all $n > n_1$ where $n_1, c_3 > 0$\\
+for all $n > n_1$ where $n_1, c_3 > 0$\newline
 then
 \[0 \leq f(n) \leq c_3n^2 \leq \frac{c_3c_1}{c_2}n^3\]
 for all $n > max(n_0, n_1)$, QED
-\subsection*{1-2}
-Let $t_m = the\ number\ of\ while\ checks$, $k = the\ index\ of\ key$, $d_n = time cost of each line to execute once$\\
-Since the value of m is assigned to l in the beginning of each while loop, m will start from 1 and increase by 1 when while loop is executed once, moreover, $A[m] \leq key$ will always be satisfied.\\
+\subsection*{1-2 - all by myself}
+Let $t_m = the\ number\ of\ while\ checks$, $k = the\ index\ of\ key$, $d_n = time cost of each line to execute once$\newline
+Since the value of m is assigned to l in the beginning of each while loop, m will start from 1 and increase by 1 when while loop is executed once, moreover, $A[m] \leq key$ will always be satisfied.\newline
 therefore,
 \[t_m = k\]
 in worst case, key is not in the array, in this case
@@ -55,6 +61,19 @@ where $c_1$, $c_2 > 0$
 \[\lim_{n \to \infty} {\frac{c_1n + c_2}{n}} = c_1\]
 By conjecture 1, time complexity of the algorithm is $O(n)$
 \subsection*{1-3}
+ref: \url{https://math.stackexchange.com/questions/925053/using-limits-to-determine-big-o-big-omega-and-big-theta#comment6149810_925053}\newline
 \[f(n)=\Theta(n^2)\Longleftrightarrow there\ exists\ positive\ (n_0, c_1, c_2)\ such\ that\ c_1n^2\leq f(n)\leq c_2n^2\ for\ all\ n\geq n_0\]
-
+Let \(c_1 = 1\), \(c_2 = 10\) and \(f(n) = n^2(sin(n) + 2) + n\)\newline
+for all \(n > 0\), \(n^2  \leq f(n) \leq 10n^2\)\newline
+Suppose
+\[\lim_{n \to \infty} {f(n)} = L\]
+where $L \in R$, then there exist $\epsilon > 0$, $n > 0$ such that for all $n > n_0$,
+\[|f(n)-L|<\epsilon\]
+Let $f(n_1) = \epsilon_1$ where $n_1 > n_0$ and $\epsilon_1 < \epsilon$
+\[f(n_1 + 2\pi k) - f(n_1) = ((n_1+2\pi k)^2-n_1^2)(sin(n_1) + 2) + 2\pi k\]
+where $k \in n$
+\[\lim_{k \to \infty}{f(n_1 + 2\pi k) - f(n_1)} \neq 0\]
+\[\Rightarrow |f(n+2\pi k) - L| > \epsilon\]
+for some $k > k_0$  where $k_0 \in n$\newline
+That is, $\lim_{n \to \infty} {\frac{f(n)}{n^2}} $does not exists, therefore, the proposition is WRONG.
 \end{document}
