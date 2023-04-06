@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1680712565 "HW1.xdv" "HW1.pdf" "HW1" 1680712566 0
-  "HW1.xdv" 1680712565 19424 b4ad802bf80ad9000d0698607a74921e "xelatex"
+["xdvipdfmx"] 1680794565 "HW1.xdv" "HW1.pdf" "HW1" 1680794565 0
+  "HW1.xdv" 1680794564 19424 907f7f6df5d4ead0855d8234f3a923df "xelatex"
   (generated)
   "HW1.pdf"
   (rewritten before read)
-["xelatex"] 1680712564 "d:/Data Structure and Algorithms/HW1.tex" "HW1.xdv" "HW1" 1680712566 0
+["xelatex"] 1680794563 "d:/Data Structure and Algorithms/HW1.tex" "HW1.xdv" "HW1" 1680794565 0
   "C:/Users/ws130/AppData/Local/MiKTeX/miktex/data/le/xetex/xelatex.fmt" 1680711123 36442712 d876e924febe60638fd95b1f8ee14bb7 ""
   "C:/Users/ws130/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi12.tfm" 1136765053 1524 4414a8315f39513458b80dfc63bff03a ""
   "C:/Users/ws130/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi6.tfm" 1136765053 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -40,9 +40,9 @@
   "C:/Users/ws130/AppData/Local/Programs/MiKTeX/tex/xelatex/xecjk/xeCJK.cfg" 1659726270 408 7369c27beaa819c5f46de3795b22ee3e ""
   "C:/Users/ws130/AppData/Local/Programs/MiKTeX/tex/xelatex/xecjk/xeCJK.sty" 1659726270 183137 ed372550124703b2b73cbcc0b47cb20f ""
   "C:/Users/ws130/AppData/Local/Programs/MiKTeX/tex/xelatex/xecjk/xeCJKfntef.sty" 1659726270 39577 b470f8a1dbecc9c45c9bf05ca7db9188 ""
-  "HW1.aux" 1680712565 32 ab05033ccbb38b00a31b200ccedf8001 "xelatex"
-  "HW1.tex" 1680712563 3741 0de13dd09eb46a13f171c70dbb60aa4e ""
-  "d:/Data Structure and Algorithms/HW1.tex" 1680712563 3741 0de13dd09eb46a13f171c70dbb60aa4e ""
+  "HW1.aux" 1680794564 32 ab05033ccbb38b00a31b200ccedf8001 "xelatex"
+  "HW1.tex" 1680794561 3741 0de13dd09eb46a13f171c70dbb60aa4e ""
+  "d:/Data Structure and Algorithms/HW1.tex" 1680794561 3741 0de13dd09eb46a13f171c70dbb60aa4e ""
   (generated)
   "HW1.aux"
   "HW1.log"
