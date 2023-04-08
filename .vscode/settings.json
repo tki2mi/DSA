@@ -1,11 +1,12 @@
 {
     "files.associations": {
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "algorithm": "c"
     },
     "clang-format.style": "file",
     "clang-format.language.cpp.style": "file",
     "clang-format.language.c.style": "file",
     "clang-format.fallbackStyle": "Google",
     "clang-format.language.c.fallbackStyle": "Google",
-    "clang-format.language.cpp.fallbackStyle": "Google",    
+    "clang-format.language.cpp.fallbackStyle": "Google",
 }
