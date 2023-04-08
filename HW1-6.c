@@ -8,33 +8,33 @@ typedef struct bakery { // bakery有rank跟toast兩個性質
     int visited;
 } bakery;
 
-bakery *training(bakery **grid, int i, int j, int m, int n, int sk, int day) {
+bakery *training(bakery ***grid, int i, int j, int m, int n, int sk, int day) {
     int distance = 1;
     int ratingTemp = 10000000;
-    int isNull = 0; //紀錄null的數量
+    int isNull = 0; // 紀錄null的數量
     bakery *visit = NULL;
     bakery *nearby[4];
     while (1) {
         if (i - distance >= 0) {
-            nearby[0] = &grid[i - distance][j];
+            nearby[0] = grid[i - distance][j];
         }
         else {
             nearby[0] = NULL;
         }
         if (i + distance < n) {
-            nearby[1] = &grid[i + distance][j];
+            nearby[1] = grid[i + distance][j];
         }
         else {
             nearby[1] = NULL;
         }
         if (j - distance >= 0) {
-            nearby[2] = &grid[i][j - distance];
+            nearby[2] = grid[i][j - distance];
         }
         else {
             nearby[2] = NULL;
         }
         if (j + distance < m) {
-            nearby[3] = &grid[i][j + distance];
+            nearby[3] = grid[i][j + distance];
         }
         else {
             nearby[3] = NULL;
@@ -47,7 +47,7 @@ bakery *training(bakery **grid, int i, int j, int m, int n, int sk, int day) {
         if (isNull == 4) {
             return NULL;
         }
-        for (size_t i = 0; i < 4; i++) { //決定要visit哪間，選rating最小的
+        for (size_t i = 0; i < 4; i++) { // 決定要visit哪間，選rating最小的
             if (nearby[i] != NULL) {
                 if (nearby[i]->visited == day) {
                     continue;
@@ -83,20 +83,20 @@ int main() {
     scanf("%d %d", &n, &m);
 
     bakery *rank = malloc(
-        m * n * sizeof(bakery)); //分配一個以struct元素組成的array，由rank排序
+        m * n * sizeof(bakery)); // 分配一個以struct元素組成的array，由rank排序
 
-    //分配grid的空間
+    // 分配grid的空間
     grid = (struct bakery ***)malloc(n * sizeof(struct bakery **));
 
-    //開始輸入rating, toast
+    // 開始輸入rating, toast
 
-    int temp;
+    int tempRank;
     for (size_t i = 0; i < n; i++) {
         grid[i] = (struct bakery **)malloc(m * sizeof(bakery *));
         for (size_t j = 0; j < m; j++) {
-            scanf("%d", &temp);
-            grid[i][j] = &rank[temp];
-            grid[i][j]->rating = temp;
+            scanf("%d", &tempRank);
+            grid[i][j] = &rank[tempRank];
+            grid[i][j]->rating = tempRank;
             grid[i][j]->visited = 0;
         }
     }
@@ -106,7 +106,7 @@ int main() {
         }
     }
 
-    //輸入日數
+    // 輸入日數
     scanf("%d %d %d", &T1, &R, &T2);
     scanf("%d %d %d", &rk1, &lk1, &sk1);
     scanf("%d %d", &rkr, &lkr);
@@ -162,7 +162,7 @@ int main() {
         printf("%d\n", &grid[i][m - 1]);
     }
 
-    //釋放記憶體
+    // 釋放記憶體
     for (size_t i = 0; i < n; i++) {
         free(grid[i]);
     }
