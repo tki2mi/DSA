@@ -79,27 +79,30 @@ bakery *training(bakery **grid, int i, int j, int m, int n, int sk, int day) {
 int main() {
     int m, n, T1, R, T2, rk1, rkr, rk2, lk1, lkr, lk2, sk1,
         sk2; // m, n為街道數量
-    struct bakery **grid; // grid是一個二維陣列，裡面的所有元素都是bakery的指標
+    struct bakery ***grid; // grid是一個二維陣列，裡面的所有元素都是bakery的指標
     scanf("%d %d", &n, &m);
 
+    bakery *rank = malloc(
+        m * n * sizeof(bakery)); //分配一個以struct元素組成的array，由rank排序
+
     //分配grid的空間
-    grid = (struct bakery **)malloc(n * sizeof(struct bakery *));
-    for (size_t i = 0; i < n; i++) {
-        grid[i] = (struct bakery *)malloc(m * sizeof(struct bakery));
-        for (size_t j = 0; j < m; j++) {
-            grid[i][j] = (struct bakery){0, 0, 0};
-        }
-    }
+    grid = (struct bakery ***)malloc(n * sizeof(struct bakery **));
 
     //開始輸入rating, toast
+
+    int temp;
     for (size_t i = 0; i < n; i++) {
+        grid[i] = (struct bakery **)malloc(m * sizeof(bakery *));
         for (size_t j = 0; j < m; j++) {
-            scanf("%d", &grid[i][j].rating);
+            scanf("%d", &temp);
+            grid[i][j] = &rank[temp];
+            grid[i][j]->rating = temp;
+            grid[i][j]->visited = 0;
         }
     }
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < m; j++) {
-            scanf("%d", &grid[i][j].toast);
+            scanf("%d", &grid[i][j]->toast);
         }
     }
 
@@ -114,8 +117,8 @@ int main() {
     int pos_i, pos_j;
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < m; j++) {
-            if (grid[i][j].rating = rk1) {
-                *temp = grid[i][j];
+            if (grid[i][j]->rating = rk1) {
+                temp = grid[i][j];
                 pos_i = i;
                 pos_j = j;
             }
@@ -134,8 +137,8 @@ int main() {
     // training period 2
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < m; j++) {
-            if (grid[i][j].rating = rk2) {
-                *temp = grid[i][j];
+            if (grid[i][j]->rating = rk2) {
+                temp = grid[i][j];
                 pos_i = i;
                 pos_j = j;
             }
