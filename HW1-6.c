@@ -47,19 +47,19 @@ void close_bakery(position pos) {
 
 void open_bakery(position pos) {
     if (pos.left != NULL) {
-        pos.left->right = &pos;
+        pos.left->right = pos.pos->pos;
     }
     if (pos.right != NULL) {
-        pos.right->left = &pos;
+        pos.right->left = pos.pos->pos;
     }
     if (pos.top != NULL) {
-        pos.top->bot = &pos;
+        pos.top->bot = pos.pos->pos;
     }
     if (pos.bot != NULL) {
-        pos.bot->top = &pos;
+        pos.bot->top = pos.pos->pos;
     }
 }
-int nearest(position pos1, position *nearby, int dir) { //檢查tosat夠不夠，如果不夠就關店
+int nearest(position pos1, position *nearby, int dir) { // 檢查tosat夠不夠，如果不夠就關店
     while (nearby->pos->toast <= 0) {
         close_bakery(*nearby);
         if (dir == 0) {
@@ -149,7 +149,7 @@ int main() {
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < m; j++) {
             scanf("%d", &tempRank);
-            grid[i][j].pos = &rank[tempRank - 1]; //指派位置及上下左右
+            grid[i][j].pos = &rank[tempRank - 1]; // 指派位置及上下左右
             rank[tempRank - 1].pos = &grid[i][j];
             if (i > 0) {
                 grid[i - 1][j].bot = &grid[i][j];
@@ -187,8 +187,8 @@ int main() {
     close_bakery(*visited[0]);
     struct position **closedBakery = (struct position **)calloc(n * m, sizeof(struct position *));
     int lk_real;
-    int noToast = 0;      //每天開始時被吃垮的店數
-    int NoToastIndex = 0; //即時記錄被吃垮的店數
+    int noToast = 0;      // 每天開始時被吃垮的店數
+    int NoToastIndex = 0; // 即時記錄被吃垮的店數
 
     for (size_t day = 1; day <= T1; day++) {
         lk_real = lk1;
@@ -198,7 +198,7 @@ int main() {
                 if (visited[i]->pos->toast <= sk1) {
                     visited[i]->pos->toast = 0;
                     closedBakery[NoToastIndex] = visited[i];
-                    NoToastIndex++; //吃垮一間+1
+                    NoToastIndex++; // 吃垮一間+1
                 }
                 else {
                     visited[i]->pos->toast -= sk1;
@@ -224,6 +224,6 @@ int main() {
             close_bakery(*closedBakery[i]);
             closedBakery[i] = NULL;
         }
-        noToast = NoToastIndex; //更新每天開始時被吃垮的店數
+        noToast = NoToastIndex; // 更新每天開始時被吃垮的店數
     }
 }
