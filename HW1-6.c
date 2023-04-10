@@ -111,7 +111,7 @@ position *training(position pos) {
                 minDistance = tempDistance;
                 tempDir = i;
             }
-            else if (minDistance == tempDistance) {
+            else if ((tempDir != 5) && (minDistance == tempDistance)) {
                 if (nearby[i]->pos->rating < nearby[tempDir]->pos->rating) {
                     tempDir = i;
                 }
@@ -188,12 +188,17 @@ position *navigate_inv(position *root, int x, int y) {
 
 void rotate(position *root1, position *center, position *center2, int lk) {
     position *pos_tmp1 = center;
+    position *pos_tmp3 = center;
     position *pos_tmp2 = center2;
+    position *pos_tmp4 = center2;
     position *temp = NULL;
     for (size_t i = 0; i < (lk / 2); i++) { //找到旋轉範圍的左上角
         pos_tmp1 = pos_tmp1->left->top;
         pos_tmp2 = pos_tmp2->left->top;
+        pos_tmp3 = pos_tmp1->right->bot;
+        pos_tmp4 = pos_tmp2->right->bot;
     }
+
     if (pos_tmp1 == root1) {
         root1 = pos_tmp2;
     }
@@ -407,16 +412,27 @@ int main() {
 
     // Racing period
     // A huge credit to Boru Lin, He's a fking genius
+    for (size_t i = 0; i < NoToastIndex; i++) {
+        open_bakery(*closedBakery[NoToastIndex - 1 - i]);
+    }
     struct position **grid_inv; //建立一個顛倒版的地圖
-    grid_inv = (struct position **)malloc(n * sizeof(struct position *));
-    for (size_t i = 0; i < n; i++) {
-        grid_inv[i] = (struct position *)malloc(m * sizeof(position));
-        for (size_t j = 0; j < m; j++) {
-            *grid[i][j].top = grid[i - 1][j];
-            *grid[i][j].bot = grid[i + 1][j];
-            *grid[i][j].left = grid[i][j - 1];
-            *grid[i][j].right = grid[i][j + 1];
-            grid_inv[i][j] = node_inverse(grid[n - i - 1][m - j - 1]);
+    grid_inv = (struct position **)calloc(n, sizeof(struct position *));
+
+    grid_inv[0] = (struct position *)calloc(m, sizeof(position));
+    for (size_t j = 1; j < m; j++) {
+        grid_inv[0][j].pos = grid[n - 1][m - j - 1].pos;
+        grid_inv[0][j - 1].right = &grid_inv[0][j];
+        grid_inv[0][j].left = &grid_inv[0][j - 1];
+    }
+    for (size_t i = 1; i < n; i++) {
+        grid_inv[i] = (struct position *)calloc(m, sizeof(position));
+        grid_inv[i][0].pos = grid[n - i - 1][m - 1].pos;
+        for (size_t j = 1; j < m; j++) {
+            grid_inv[i][j].pos = grid[n - i - 1][m - j - 1].pos;
+            grid_inv[i][j - 1].right = &grid_inv[i][j];
+            grid_inv[i][j].left = &grid_inv[i][j - 1];
+            grid_inv[i - 1][j].bot = &grid_inv[i][j];
+            grid_inv[i][j].top = &grid_inv[i - 1][j];
         }
     }
 
@@ -428,13 +444,16 @@ int main() {
     for (size_t i = 0; i < R; i++) {
         pos_rkr = findByRank(root, rank, rkr[0], n, m);
         center = navigate(root, pos_rkr[0], pos_rkr[1]);
-        center2 = navigate(root_inv, pos_rkr[0], pos_rkr[1]);
+        center2 = navigate_inv(root_inv, pos_rkr[0], pos_rkr[1]);
         rotate(root, center, center2, lkr[i]);
     }
 
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < m; j++) {
             grid[i][j] = *root;
+            grid[i][j].pos->pos_i = i;
+            grid[i][j].pos->pos_j = j;
+            grid[i][j].pos->pos = &grid[i][j];
             root = root->right;
         }
         root = grid[i][0].bot;
