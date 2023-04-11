@@ -1,4 +1,3 @@
-#include <memory.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -59,43 +58,43 @@ void open_bakery(position pos) {
         pos.bot->top = pos.pos->pos;
     }
 }
-int nearest(position pos1, position *nearby, int dir) { //檢查tosat夠不夠，如果不夠就關店
-    while (nearby->pos->toast <= 0) {
-        close_bakery(*nearby);
+int nearest(position pos1, position **nearby, int dir) { // 檢查toast夠不夠，如果不夠就關店
+    while ((*nearby)->pos->toast <= 0) {
+        close_bakery(*(*nearby));
         if (dir == 0) {
-            if (nearby->top != NULL) {
-                nearby = nearby->top;
+            if ((*nearby)->top != NULL) {
+                *nearby = (*nearby)->top;
             }
             else {
                 return 10000000;
             }
         }
         else if (dir == 1) {
-            if (nearby->bot != NULL) {
-                nearby = nearby->bot;
+            if ((*nearby)->bot != NULL) {
+                *nearby = (*nearby)->bot;
             }
             else {
                 return 10000000;
             }
         }
         else if (dir == 2) {
-            if (nearby->left != NULL) {
-                nearby = nearby->left;
+            if ((*nearby)->left != NULL) {
+                *nearby = (*nearby)->left;
             }
             else {
                 return 10000000;
             }
         }
         else if (dir == 3) {
-            if (nearby->right != NULL) {
-                nearby = nearby->right;
+            if ((*nearby)->right != NULL) {
+                *nearby = (*nearby)->right;
             }
             else {
                 return 10000000;
             }
         }
     }
-    return abs(nearby->pos->pos_i - pos1.pos->pos_i) + abs(nearby->pos->pos_j - pos1.pos->pos_j);
+    return abs((*nearby)->pos->pos_i - pos1.pos->pos_i) + abs((*nearby)->pos->pos_j - pos1.pos->pos_j);
 }
 
 position *training(position pos) {
@@ -106,7 +105,7 @@ position *training(position pos) {
     position *nearby[4] = {pos.top, pos.bot, pos.left, pos.right};
     for (size_t i = 0; i < 4; i++) {
         if (nearby[i] != NULL) {
-            tempDistance = nearest(pos, nearby[i], i);
+            tempDistance = nearest(pos, &nearby[i], i);
             if (minDistance > tempDistance) {
                 minDistance = tempDistance;
                 tempDir = i;
@@ -124,16 +123,6 @@ position *training(position pos) {
     else {
         return nearby[tempDir];
     }
-}
-
-position node_inverse(position pos2) {
-    position tempPos;
-    tempPos.bot = pos2.top;
-    tempPos.top = pos2.bot;
-    tempPos.right = pos2.left;
-    tempPos.left = pos2.right;
-    tempPos.pos = pos2.pos;
-    return tempPos;
 }
 
 int *findByRank(position *root, bakery *rank, int rk, int n, int m) {
@@ -188,15 +177,11 @@ position *navigate_inv(position *root, int x, int y) {
 
 void rotate(position *root1, position *center, position *center2, int lk) {
     position *pos_tmp1 = center;
-    position *pos_tmp3 = center;
     position *pos_tmp2 = center2;
-    position *pos_tmp4 = center2;
     position *temp = NULL;
-    for (size_t i = 0; i < (lk / 2); i++) { //找到旋轉範圍的左上角
+    for (size_t i = 0; i < (lk / 2); i++) { // 找到旋轉範圍的左上角
         pos_tmp1 = pos_tmp1->left->top;
         pos_tmp2 = pos_tmp2->left->top;
-        pos_tmp3 = pos_tmp1->right->bot;
-        pos_tmp4 = pos_tmp2->right->bot;
     }
 
     if (pos_tmp1 == root1) {
@@ -327,7 +312,7 @@ int main() {
     for (size_t i = 0; i < n; i++) {
         for (size_t j = 0; j < m; j++) {
             scanf("%d", &tempRank);
-            grid[i][j].pos = &rank[tempRank - 1]; //指派位置及上下左右
+            grid[i][j].pos = &rank[tempRank - 1]; // 指派位置及上下左右
             rank[tempRank - 1].pos = &grid[i][j];
             if (i > 0) {
                 grid[i - 1][j].bot = &grid[i][j];
@@ -356,7 +341,7 @@ int main() {
     scanf("%d %d %d", &T1, &R, &T2);
     scanf("%d %d %d", &rk1, &lk1, &sk1);
 
-    //分配racing period的計畫空間
+    // 分配racing period的計畫空間
     int *rkr = (int *)malloc(R * sizeof(int));
     int *lkr = (int *)malloc(R * sizeof(int));
     for (size_t i = 0; i < R; i++) {
@@ -371,8 +356,8 @@ int main() {
     close_bakery(*visited[0]);
     struct position **closedBakery = (struct position **)calloc(n * m, sizeof(struct position *));
     int lk_real;
-    int noToast = 0;      //每天開始時被吃垮的店數
-    int NoToastIndex = 0; //即時記錄被吃垮的店數
+    int noToast = 0;      // 每天開始時被吃垮的店數
+    int NoToastIndex = 0; // 即時記錄被吃垮的店數
 
     for (size_t day = 1; day <= T1; day++) {
         lk_real = lk1;
@@ -382,7 +367,7 @@ int main() {
                 if (visited[i]->pos->toast <= sk1) {
                     visited[i]->pos->toast = 0;
                     closedBakery[NoToastIndex] = visited[i];
-                    NoToastIndex++; //吃垮一間+1
+                    NoToastIndex++; // 吃垮一間+1
                 }
                 else {
                     visited[i]->pos->toast -= sk1;
@@ -407,7 +392,7 @@ int main() {
         for (size_t i = noToast; i < NoToastIndex; i++) {
             close_bakery(*closedBakery[i]);
         }
-        noToast = NoToastIndex; //更新每天開始時被吃垮的店數
+        noToast = NoToastIndex; // 更新每天開始時被吃垮的店數
     }
 
     // Racing period
@@ -415,7 +400,7 @@ int main() {
     for (size_t i = 0; i < NoToastIndex; i++) {
         open_bakery(*closedBakery[NoToastIndex - 1 - i]);
     }
-    struct position **grid_inv; //建立一個顛倒版的地圖
+    struct position **grid_inv; // 建立一個顛倒版的地圖
     grid_inv = (struct position **)calloc(n, sizeof(struct position *));
 
     grid_inv[0] = (struct position *)calloc(m, sizeof(position));
@@ -436,7 +421,7 @@ int main() {
         }
     }
 
-    position *root = &grid[0][0]; //開始旋轉
+    position *root = &grid[0][0]; // 開始旋轉
     position *root_inv = &grid_inv[n - 1][m - 1];
     position *center = NULL;
     position *center2 = NULL;
@@ -458,9 +443,13 @@ int main() {
         }
         root = grid[i][0].bot;
     }
-    for (size_t i = noToast; i < NoToastIndex; i++) {
+    /*for (size_t i = noToast; i < NoToastIndex; i++) {
         close_bakery(*closedBakery[i]);
-    }
+    }*/
+
+    free(lkr);
+    free(rkr);
+    free(pos_rkr);
 
     // Training Period 2
 
@@ -475,7 +464,7 @@ int main() {
                 if (visited[i]->pos->toast <= sk2) {
                     visited[i]->pos->toast = 0;
                     closedBakery[NoToastIndex] = visited[i];
-                    NoToastIndex++; //吃垮一間+1
+                    NoToastIndex++; // 吃垮一間+1
                 }
                 else {
                     visited[i]->pos->toast -= sk2;
@@ -500,7 +489,7 @@ int main() {
         for (size_t i = noToast; i < NoToastIndex; i++) {
             close_bakery(*closedBakery[i]);
         }
-        noToast = NoToastIndex; //更新每天開始時被吃垮的店數
+        noToast = NoToastIndex; // 更新每天開始時被吃垮的店數
     }
 
     for (size_t i = 0; i < n; i++) {
@@ -508,5 +497,11 @@ int main() {
             printf("%d ", grid[i][j].pos->toast);
         }
         printf("%d\n", grid[i][m - 1].pos->toast);
+        free(grid[i]);
+        free(grid_inv[i]);
     }
+    free(rank);
+    free(grid_inv);
+    free(grid);
+    free(visited);
 }
