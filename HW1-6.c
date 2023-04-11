@@ -125,9 +125,8 @@ position *training(position pos) {
     }
 }
 
-int *findByRank(position *root, bakery *rank, int rk, int n, int m) {
+void findByRank(position *root, bakery *rank, int *pos_tmp, int rk, int n, int m) {
     position *findRoot = rank[rk - 1].pos;
-    int *pos_tmp = calloc(2, sizeof(int));
     for (size_t i = 0; i < 10000; i++) {
         if (findRoot->left != NULL) {
             findRoot = findRoot->left;
@@ -150,7 +149,6 @@ int *findByRank(position *root, bakery *rank, int rk, int n, int m) {
         pos_tmp[0] = m - 1 - pos_tmp[0];
         pos_tmp[1] = n - 1 - pos_tmp[1];
     }
-    return pos_tmp;
 }
 
 position *navigate(position *root, int x, int y) {
@@ -295,7 +293,7 @@ int main() {
     struct position **grid;                            // grid是一個二維陣列，裡面的所有元素都是bakery的指標，以及上下左右的資訊
     scanf("%d %d", &n, &m);
 
-    bakery *rank = malloc(m * n * sizeof(bakery)); // 分配一個以struct元素組成的array，由rank排序
+    bakery *rank = (struct bakery *)malloc(m * n * sizeof(bakery)); // 分配一個以struct元素組成的array，由rank排序
 
     // 分配grid的空間
     grid = (struct position **)malloc(n * sizeof(struct position *));
@@ -375,7 +373,7 @@ int main() {
                 close_bakery(*visited[i]);
             }
             else {
-                lk_real = i;
+                lk_real = i - 1;
                 break;
             }
         }
@@ -386,8 +384,13 @@ int main() {
                 visited[lk_real - 1 - i] = NULL;
             }
         }
-        visited[0] = visited[lk_real];
-        visited[lk_real] = NULL;
+        visited[0] = visited[lk_real]->pos->pos;
+        if (lk_real != 0) {
+            visited[lk_real] = NULL;
+        }
+        else {
+            break;
+        }
         lk_real = lk1;
         for (size_t i = noToast; i < NoToastIndex; i++) {
             close_bakery(*closedBakery[i]);
@@ -427,7 +430,7 @@ int main() {
     position *center2 = NULL;
     int *pos_rkr = malloc(2 * sizeof(int));
     for (size_t i = 0; i < R; i++) {
-        pos_rkr = findByRank(root, rank, rkr[0], n, m);
+        findByRank(root, rank, pos_rkr, rkr[i], n, m);
         center = navigate(root, pos_rkr[0], pos_rkr[1]);
         center2 = navigate_inv(root_inv, pos_rkr[0], pos_rkr[1]);
         rotate(root, center, center2, lkr[i]);
