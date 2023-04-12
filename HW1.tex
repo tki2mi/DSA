@@ -115,25 +115,46 @@ Take $c' = 2^c-1$, we have $f(n)\leq c'g(n)$ for all $n > n_0$, QED\newpage
 
 \section*{2. DSA Judge}
 \subsection*{2-1}
-ref: chatGPT
+ref: chatGPT\newline
 psuedo code:
-ID-search$(A, key, l, r)$
-\[while(r - l > 1)\]
-\[m = (r - l) / 2\]
 \begin{algorithmic}
-    \Procedure{BinarySort}{$A, key, l, r$}
-    \State $m = (l + r)/2$
+    \Procedure{FindLost}{$A, n$}
+    \For{i from 0 to 1}
+    \State $m= n/2$
+    \State $l = 0$
+    \State $r = n$
     \While{$(r - l)$ > $1$}
-    \If{$m > key$}
-    \State $l=m$
-    \ElsIf{$m < key$}
-    \State $sdafsd$
+    \If{$A[m] < m + (2-k)$}
+    \State{$l = m$}
     \Else
-    \State\Return m
+    \State{$r = m$}
     \EndIf
-    \State $i \gets i-1$
     \EndWhile
-    \State $A[i+1] \gets key$
+    \EndFor
+    \State {$max(r_1, r_2) += 1$}
+    \State\Return $r_1, r_2$
     \EndProcedure
 \end{algorithmic}
+time complexity is almost the same as binary sort in worst case, the code will be run $lg(n)$ times, the time complexity $T(n) = O(lg(n))$
+
+\subsection*{2-2 - all by myself}
+\begin{algorithmic}
+    \Procedure{coupleDouble}{A,n}
+    \State $isCouple = 0$
+    \State $m = A[n]/2$
+    \For{i from 0 to n}
+    \If{$A[n-i] < m$}
+    \State $m=m/2$
+    \State $k = -k$
+    \EndIf
+    \State $isCouple += k$
+    \EndFor
+    \If{$isCouple == 0$}
+    \State $return True$
+    \Else
+    \State $return False$
+    \EndIf
+    \EndProcedure
+\end{algorithmic}
+
 \end{document}
