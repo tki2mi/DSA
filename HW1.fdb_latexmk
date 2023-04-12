@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1680874554 "HW1.xdv" "HW1.pdf" "HW1" 1680874555 0
-  "HW1.xdv" 1680874554 19412 83c3322fc8e4847b94a0d1adf55c87a8 "xelatex"
+["xdvipdfmx"] 1681305856 "HW1.xdv" "HW1.pdf" "HW1" 1681305856 0
+  "HW1.xdv" 1681305856 31796 6a0d609397e64626d400779f675a28e3 "xelatex"
   (generated)
   "HW1.pdf"
   (rewritten before read)
-["xelatex"] 1680874553 "d:/Data Structure and Algorithm/HW1.tex" "HW1.xdv" "HW1" 1680874555 0
+["xelatex"] 1681305855 "d:/Data Structure and Algorithm/HW1.tex" "HW1.xdv" "HW1" 1681305856 0
   "C:/Users/User/AppData/Local/MiKTeX/miktex/data/le/xetex/xelatex.fmt" 1680092482 36442308 a2ca6b563cbeda5ecb9f5d72c26c85b6 ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi12.tfm" 1136765053 1524 4414a8315f39513458b80dfc63bff03a ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmmi6.tfm" 1136765053 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -18,8 +18,11 @@
   "C:/Users/User/AppData/Local/Programs/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty" 1643997108 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty" 1643997108 1057 525c2192b5febbd8c1f662c9468335bb ""
+  "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/algorithmicx/algorithmicx.sty" 1114606800 26750 ce139c05a983e19ddca355b43e29c395 ""
+  "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/algorithmicx/algpseudocode.sty" 1114606920 3457 d9077efe6b74c5a094199256af8d7d9a ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/base/article.cls" 1669844196 20144 d5ecf0a5140c8d8d8b72cbe86e320eff ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/base/fontenc.sty" 1669844196 5119 4ce42f43368f652f9c9522d943cce8e4 ""
+  "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty" 1669844196 5319 48d7f3cfa322abd2788e3c09d624b922 ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/base/size12.clo" 1669844196 8449 c314623021fbddd0180c05345324933c ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd" 1669844196 2430 8418b3f1835e588625becbcac4dbce56 ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/latex/base/tuenc.def" 1669844196 26445 9ed4a9401f29cbb58ef6909cd5aec01f ""
@@ -40,9 +43,9 @@
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/xelatex/xecjk/xeCJK.cfg" 1659726270 408 7369c27beaa819c5f46de3795b22ee3e ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/xelatex/xecjk/xeCJK.sty" 1659726270 183137 ed372550124703b2b73cbcc0b47cb20f ""
   "C:/Users/User/AppData/Local/Programs/MiKTeX/tex/xelatex/xecjk/xeCJKfntef.sty" 1659726270 39577 b470f8a1dbecc9c45c9bf05ca7db9188 ""
-  "HW1.aux" 1680874554 32 ab05033ccbb38b00a31b200ccedf8001 "xelatex"
-  "HW1.tex" 1680874545 3741 0de13dd09eb46a13f171c70dbb60aa4e ""
-  "d:/Data Structure and Algorithm/HW1.tex" 1680874545 3741 0de13dd09eb46a13f171c70dbb60aa4e ""
+  "HW1.aux" 1681305856 32 2d1df76398b3c48c6419a45a7331db2d "xelatex"
+  "HW1.tex" 1681305854 6622 79f6694d76174743892c7d9b202a6e25 ""
+  "d:/Data Structure and Algorithm/HW1.tex" 1681305854 6622 79f6694d76174743892c7d9b202a6e25 ""
   (generated)
   "HW1.aux"
   "HW1.log"
