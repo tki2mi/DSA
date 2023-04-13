@@ -142,7 +142,7 @@ time complexity is almost the same as binary sort in worst case, the code will b
     \Procedure{coupleDouble}{A,n}
     \State $isCouple = 0$
     \State $m = A[n]/2$
-    \For{i from 0 to n}
+    \For{i from 0 to $n - 1$}
     \If{$A[n-i] < m$}
     \State $m=m/2$
     \State $k = -k$
@@ -150,10 +150,50 @@ time complexity is almost the same as binary sort in worst case, the code will b
     \State $isCouple += k$
     \EndFor
     \If{$isCouple == 0$}
-    \State $return True$
+    \State $return\ True$
     \Else
-    \State $return False$
+    \State $return\ False$
     \EndIf
+    \EndProcedure
+\end{algorithmic}\newpage
+
+\subsection*{2-3 - all by myself}
+\begin{algorithmic}
+    \Procedure{ReverselySort}{$root1, root2$}
+    \If{$root1.ID > root2.ID$}
+    \State $newNext = root1$
+    \Else
+    \State $newNext = root2$
+    \EndIf
+    \While{$root1.next\ or\ root2.next\ != NIL$}
+    \If{$root2.ID > root1.ID$}
+    \State $switch(root1, root2)$
+    \EndIf
+    \If{$root1.next != NIL$}
+    \State $newPrev = root1.next$
+    \State $root1.next = newNext$
+    \State $newNext = root1$
+    \State $root1 = newPrev$
+    \Else
+    \State $root1.next = newNext$
+    \State $newNext = root1$
+    \While{$root2.next != NIL$}
+    \State $newPrev = root2.next$
+    \State $root2.next = newNext$
+    \State $newNext = root1$
+    \State $root2 = newPrev$
+    \EndWhile
+    \EndIf
+    \EndWhile
+    \EndProcedure
+\end{algorithmic}
+
+\subsection*{2-4 - all by myself}
+\begin{algorithmic}
+    \Procedure{ReverselySort}{$node$}
+    \While{$node.next != NIL$}
+    \State $$
+    \EndWhile
     \EndProcedure
 \end{algorithmic}
 

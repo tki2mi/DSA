@@ -1,14 +1,14 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.4.6)  13 APR 2023 00:21
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.29)  13 APR 2023 14:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"d:/Data Structure and Algorithms/HW1.tex"
-(d:/Data Structure and Algorithms/HW1.tex
+**"d:/Data Structure and Algorithm/HW1.tex"
+(d:/Data Structure and Algorithm/HW1.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-02-22> (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+L3 programming layer <2023-02-22> (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+(C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
 File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count181
@@ -22,14 +22,14 @@ File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
-) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
 \Gm@cnth=\count189
@@ -44,14 +44,14 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layouthoffset=\dimen147
 \Gm@layoutvoffset=\dimen148
 \Gm@dimlist=\toks17
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/xurl\xurl.sty
 Package: xurl 2022/01/09 v 0.10 modify URL breaks
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmicx.sty
+)) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
@@ -65,13 +65,13 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \c@ALG@storecount=\count197
 \c@ALG@tmpcounter=\count198
 \ALG@tmplength=\skip52
-) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudocode.sty
+) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/algorithmicx\algpseudocode.sty
 Package: algpseudocode 
 
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/xelatex/xecjk\xeCJK.sty (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/xelatex/xecjk\xeCJK.sty (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2023-02-22 L3 programming layer (loader) 
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xetex.def
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xetex.def
 File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
 \g__graphics_track_int=\count199
 \l__pdf_internal_box=\box51
@@ -80,9 +80,9 @@ File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
 \g__pdf_backend_link_int=\count268
 ))
 Package: xeCJK 2022/08/05 v3.9.1 Typesetting CJK scripts with XeLaTeX
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/ctex\ctexhook.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/ctex\ctexhook.sty
 Package: ctexhook 2022/07/14 v2.5.10 Document and package hooks (CTEX)
-) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xtemplate\xtemplate.sty
+) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xtemplate\xtemplate.sty
 Package: xtemplate 2023-01-16 L3 Experimental prototype document functions
 \l__xtemplate_tmp_dim=\dimen149
 \l__xtemplate_tmp_int=\count269
@@ -149,11 +149,11 @@ Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
 \g__xeCJK_fam_allocation_int=\count280
 \l__xeCJK_verb_case_int=\count281
 \l__xeCJK_verb_exspace_skip=\skip60
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.sty (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.sty (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
 Package: xparse 2023-01-16 L3 Experimental document command parser
 )
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xetex.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xetex.sty
 Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_script_int=\count282
 \l__fontspec_language_int=\count283
@@ -169,9 +169,9 @@ Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_tmpa_dim=\dimen177
 \l__fontspec_tmpb_dim=\dimen178
 \l__fontspec_tmpc_dim=\dimen179
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cfg))) (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/xelatex/xecjk\xeCJK.cfg
+) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cfg))) (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/xelatex/xecjk\xeCJK.cfg
 File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 ))
 
@@ -199,7 +199,7 @@ LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 10.
- (C:\Users\ws130\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
+ (C:\Users\User\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
 File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 10.
@@ -330,14 +330,101 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
-[2] [3] [4] [5] (HW1.aux) ) 
+[2] [3] [4] [5]
+
+d:/Data Structure and Algorithm/HW1.tex:196: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.196     \EndWhile
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+d:/Data Structure and Algorithm/HW1.tex:196: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.196     \EndWhile
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+d:/Data Structure and Algorithm/HW1.tex:196: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.196     \EndWhile
+                   
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+d:/Data Structure and Algorithm/HW1.tex:197: LaTeX Error: Command \item invalid in math mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.197     \EndProcedure
+                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+d:/Data Structure and Algorithm/HW1.tex:197: Missing $ inserted.
+<inserted text> 
+                $
+l.197     \EndProcedure
+                       
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+d:/Data Structure and Algorithm/HW1.tex:197: Missing } inserted.
+<inserted text> 
+                }
+l.197     \EndProcedure
+                       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+d:/Data Structure and Algorithm/HW1.tex:197: Display math should end with $$.
+<to be read again> 
+                   \tex_par:D 
+l.197     \EndProcedure
+                       
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+d:/Data Structure and Algorithm/HW1.tex:197: Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.197     \EndProcedure
+                       
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[6] (HW1.aux) ) 
 Here is how much of TeX's memory you used:
- 5964 strings out of 411472
- 169132 string characters out of 5818265
+ 5968 strings out of 411472
+ 169168 string characters out of 5818467
  1859012 words of memory out of 5000000
- 26177 multiletter control sequences out of 15000+600000
+ 26181 multiletter control sequences out of 15000+600000
  516622 words of font info for 62 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 70i,6n,81p,344b,324s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 70i,6n,81p,343b,324s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on HW1.xdv (5 pages, 34480 bytes).
+Output written on HW1.xdv (6 pages, 37772 bytes).
