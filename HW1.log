@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.29)  13 APR 2023 14:33
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 23.1) (preloaded format=xelatex 2023.3.29)  13 APR 2023 23:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -330,101 +330,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
-[2] [3] [4] [5]
+[2] [3] [4] [5] [6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 229--237
 
-d:/Data Structure and Algorithm/HW1.tex:196: LaTeX Error: Command \item invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.196     \EndWhile
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+ []
 
 
-d:/Data Structure and Algorithm/HW1.tex:196: LaTeX Error: Something's wrong--perhaps a missing \item.
+Underfull \hbox (badness 10000) in paragraph at lines 229--237
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.196     \EndWhile
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+ []
 
 
-d:/Data Structure and Algorithm/HW1.tex:196: LaTeX Error: Something's wrong--perhaps a missing \item.
+Underfull \hbox (badness 10000) in paragraph at lines 244--245
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.196     \EndWhile
-                   
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+ []
 
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 275--283
 
-d:/Data Structure and Algorithm/HW1.tex:197: LaTeX Error: Command \item invalid in math mode.
+ []
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.197     \EndProcedure
-                       
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-d:/Data Structure and Algorithm/HW1.tex:197: Missing $ inserted.
-<inserted text> 
-                $
-l.197     \EndProcedure
-                       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-d:/Data Structure and Algorithm/HW1.tex:197: Missing } inserted.
-<inserted text> 
-                }
-l.197     \EndProcedure
-                       
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-d:/Data Structure and Algorithm/HW1.tex:197: Display math should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.197     \EndProcedure
-                       
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-d:/Data Structure and Algorithm/HW1.tex:197: Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.197     \EndProcedure
-                       
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-[6] (HW1.aux) ) 
+[10] (HW1.aux) ) 
 Here is how much of TeX's memory you used:
- 5968 strings out of 411472
- 169168 string characters out of 5818467
+ 5984 strings out of 411472
+ 170245 string characters out of 5818467
  1859012 words of memory out of 5000000
- 26181 multiletter control sequences out of 15000+600000
- 516622 words of font info for 62 fonts, out of 8000000 for 9000
+ 26196 multiletter control sequences out of 15000+600000
+ 516630 words of font info for 63 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  70i,6n,81p,343b,324s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on HW1.xdv (6 pages, 37772 bytes).
+Output written on HW1.xdv (10 pages, 69592 bytes).

@@ -135,19 +135,22 @@ psuedo code:
     \State\Return $r_1, r_2$
     \EndProcedure
 \end{algorithmic}
-time complexity is almost the same as binary sort in worst case, the code will be run $lg(n)$ times, the time complexity $T(n) = O(lg(n))$
-
+與binary sort相似，將$m$定為array的中心點，若$A[m]>m$，則代表在$m$的前面有資料遺失，將上界定為$m$，若否則將下界定為$m$，反覆迭代後資料遺失的位置會位於上界
+Time complexity is almost the same as binary sort in worst case, the code will be run $lg(n)$ times, the time complexity $T(n) = O(lg(n))$
+\newpage
 \subsection*{2-2 - all by myself}
 \begin{algorithmic}
     \Procedure{coupleDouble}{A,n}
-    \State $isCouple = 0$
-    \State $m = A[n]/2$
+    \State $isCouple = n - 1$
     \For{i from 0 to $n - 1$}
-    \If{$A[n-i] < m$}
-    \State $m=m/2$
-    \State $k = -k$
+    \If{$A[isCouple] == 2*A[n - 1 - i]$}
+    \State $A[isCouple] = 0$
+    \State $A[n - 1 - i] = 0$
+    \State $isCouple = isCouple-1$
+    \While{$A[isCouple] == 0$}
+    \State $isCouple = isCouple-1$
+    \EndWhile
     \EndIf
-    \State $isCouple += k$
     \EndFor
     \If{$isCouple == 0$}
     \State $return\ True$
@@ -155,31 +158,33 @@ time complexity is almost the same as binary sort in worst case, the code will b
     \State $return\ False$
     \EndIf
     \EndProcedure
-\end{algorithmic}\newpage
+\end{algorithmic}
+從$A[n-1]$遍歷到$A[0]$，$A[IsCouple]$代表"下一個遍歷到的數字，如果是配對中較小的一項，應該要與其配對的大項"，如果配對成功，就將兩數歸零，因此$A[IsCouple]$若遇到已配對的小項便會跳過，最後若$IsCouple=0$代表所有項皆配對成功，反之則否\newline
+The for loops will run no more than $n$ times, so the time complexity is $O(n)$, and the space complexity is O(1)\newpage
 
 \subsection*{2-3 - all by myself}
 \begin{algorithmic}
     \Procedure{ReverselySort}{$root1, root2$}
-    \If{$root1.ID > root2.ID$}
+    \If{$root1.ID < root2.ID$}
     \State $newNext = root1$
     \Else
     \State $newNext = root2$
     \EndIf
     \While{$root1.next\ or\ root2.next\ != NIL$}
-    \If{$root2.ID > root1.ID$}
+    \If{$root2.ID < root1.ID$}
     \State $switch(root1, root2)$
     \EndIf
     \If{$root1.next != NIL$}
-    \State $newPrev = root1.next$
-    \State $root1.next = newNext$
+    \State $newPrev = *root1.next$
+    \State $*root1.next = newNext$
     \State $newNext = root1$
     \State $root1 = newPrev$
     \Else
-    \State $root1.next = newNext$
+    \State $*root1.next = newNext$
     \State $newNext = root1$
-    \While{$root2.next != NIL$}
-    \State $newPrev = root2.next$
-    \State $root2.next = newNext$
+    \While{$*root2.next != NIL$}
+    \State $newPrev = *root2.next$
+    \State $*root2.next = newNext$
     \State $newNext = root1$
     \State $root2 = newPrev$
     \EndWhile
@@ -187,14 +192,98 @@ time complexity is almost the same as binary sort in worst case, the code will b
     \EndWhile
     \EndProcedure
 \end{algorithmic}
+比較兩個linked list中較小的項，先將該項原本的$next$存進$newPrev$避免下家遺失，並將該項的$next$指向$newNext$，再將較小的項指定為新的$newNext$，如此不斷迭代，而如果其中一條linked list已經全數存數新的list，就將剩下的list反轉\newline
+The while loops will run no more than $n$ times, so the time complexity is $O(n)$, and the space complexity is O(1)
 
+\newpage
 \subsection*{2-4 - all by myself}
 \begin{algorithmic}
     \Procedure{ReverselySort}{$node$}
     \While{$node.next != NIL$}
-    \State $$
+    \If{$node.a_i >= 0$}
+    \State $*positiveTail.next = node$
+    \State $positiveTail = node$
+    \Else
+    \State $*node.next = negativeHead$
+    \State $negativeHead = node$
+    \EndIf
     \EndWhile
+    \State $*positiveTail.next = negativeHead$
     \EndProcedure
 \end{algorithmic}
+從head遍歷至tail，建立新的linked list，若遇到正數則將旗下家指向暫時設定的tail並暫時將其設為新的tail，若遇到負數則斷開連結並將下家指向目前遇到的最後一個負數，因為負數只會越來越大而正數只會越來越小，因此關係得以成立，最後再將最校的正數指向最大的負數\newline
+The while loops will run no more than $n$ times, so the time complexity is $O(n)$, and the space complexity is O(1)
 
+\newpage
+\section*{Problem 3 - Stack / Queue}
+\subsection*{3-1 - all by myself}
+\[5\ 3\ 4\times+8\ 2\ 3+\times5\ 1\ 9\ 6\times+/--\]
+Convert the operations of the highest priorty at first, such as those with parentheses, then put the operators of the second highest priorty behind it and put the addend(subtrahend, multiplicand, dividend) at the forefront, then the thrid priorty and so on.
+
+\subsection*{3-2 - all by myself}
+\[(5+2\times7)-((6\times3-4)-((4+8\times6)/4))\]
+Traverse all the operators from left to right, and convert it into
+\[the\ number\ in\ front\ of\ the\ front\ of\ it\  (the\ operator)\   the\ number\ in\ front\ of\ it\]
+
+\subsection*{3-3 - all by myself}
+Yes, we can move all elements to stack 2 and sort them to the ascending order by:\newline
+\newline
+Pop element 4 and push it to stack 2\newline
+Pop element 1 and push it to stack 1\newline
+Pop element 2 and push it to stack 1\newline
+Pop element 3 and push it to stack 2\newline
+Pop element 2 and push it to stack 2\newline
+Pop element 1 and push it to stack 2\newline
+
+\subsection*{3-4 - all by myself}
+-Divide all the elements in stack 0 into $m$ groups in which all the elements is ascending or descending order\newline
+-Then find the smallest elements $a_m$ of each group \newline
+-For all $a_m$, if there are more than one $a$ with larger value on the top of it, it will be impossible to move all the elements to stack 2 and sort it in ascending order, otherwise, it will be possible.
+
+\subsection*{3-5 - all by myself}
+Each time when someone wants to park a bike, ze will park zer bike in the largest space, the first one will park between 0 and 10, the second one will park between 10 and 15.5, and the third one will park between 0 and 5 or 5 and 10\newline
+
+\subsection*{3-6 - all by myself}
+\begin{algorithmic}
+    \Procedure{InsertBike}{$m, n, A$}
+    \For{$i\ from\ 2\ to\ n$}
+    \State $Enqueue(Q_1, A[i]-A[i-1])$
+    \EndFor
+    \State $Bike[0] = Q_1.head / 2$
+    \State $Enqueue(Q_2, Q_1.head/2)$
+    \State $Dequeue(Q_1)$
+    \For{$i\ from\ 2\ to\ m$}
+    \If{$Q_1.head > Q_2.head$ or $Q_1=NIL$}
+    \State $Bike[i] = Bike[i-1] + Q_1.head / 2$
+    \State $Enqueue(Q_2, Q_1.head/2)$
+    \State $Dequeue(Q_1)$
+    \Else
+    \State $Bike[i] = Bike[i-1] + Q_2.head / 2$
+    \State $Enqueue(Q_2, Q_2.head/2)$
+    \State $Dequeue(Q_2)$
+    \EndIf
+    \EndFor
+    \EndProcedure
+\end{algorithmic}
+Time complexity
+\[T(m + n) = nd_2 + (n-1)d_3 + d_5 + d_6 + d_7 + md_8 + (m-1)d_9 + (m-1)(d_{10}+d_{11}+d_{12})\]
+where $d_n$ is the time consumed by each line\newline
+Take $c_1 = max((d_2 + d_3), (d_8 + d_9 + d_{10} + d_{11} + d_{12}))$ and $c_2 = d_5 + d_6 + d_7 - d_3 - d_9 - d_{10} - d_{11} - d_{12}$
+\[T(m + n) = c_1(m + n) + c_2\]
+for all $m \geq m_0$ and $n \geq n_0$, there exists
+$c \geq c_1 + \frac{c_2}{m+n}$ such that \[T(m+n) \leq c(m+n)\]
+\[\Rightarrow T(m + n) = O(m + n)\]
+Space complexity\newline
+array A: pointer size $s_1$\newline
+integer m: size $s_2$\newline
+integer n: size $s_2$\newline
+array Bike: pointer size $s_1 +m\times$integer size $s_2$\newline
+Queue $Q_1$: $n\times$pointer size $s_1+n\times$integer size $s_2$\newline
+Queue $Q_2$: $m\times$pointer size $s_1+m\times$integer size $s_2$\newline
+\[S(m+n) = (2+m+n)s_1 + (2+2m+n)s_2\]
+Take $c = 2+2m+n$\newline
+for all sets of $m,n$
+\[c\geq 2+m+n\]
+\[\Rightarrow S(m+n)\leq c(m+n) \Rightarrow S(m+n)=O(m+n)\]
+QED
 \end{document}
