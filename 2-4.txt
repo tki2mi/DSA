@@ -1,0 +1,12 @@
+你是一個C語言大師，請幫我寫一個程式，其中包含
+1.輸入3個整數:N,M,C，並建立一個名為company的struct，其中包含top、bot、next這3個指標以及兩個int:sub與price
+2.建立第一個company，將其所有性質初始化為0
+3.建立一個方法connectTop，傳入值為兩個company c_top及c_bot，這個方法會將c_bot的top指向c_top
+4.讀取第二行輸入，第二行會有N-1個數字x_2, x_3, ...,x_N，其中第k個數字表示為x_k，將所有數字存進一個大小為N的array，輸入完成之後將array中所有的數字按順序讀一次，在讀到第k個數字時建立一個company，並call connectTop，傳入第x_k個被建立的company和第k個被建立的公司
+5.將剛剛建立的所有company加入一個array，並根據company的sub用merge sort排序
+6.建立N個linked list L_1, L_2,...,L_n的root，第k個linked list命名為L_k，每個節點含有一個int data以及一個next指標，指向下一個節點，再建立M個linked list expire_1, expire_2,...,expire_m，每個節點含有一個指標
+7.建立一個方法updatePrice，傳入2個L_k中的節點L_new, L_old與一個company c，這個方法將c的price-L_old.data再+L_new.data，但如果L_old為null，則將c的price+L_new.data就好，同理如果L_new為null，則將將c的price-L_old.data就好，如果c的top不為null，則再call一次updatePrice，傳入L_old、L_new及c.top
+8.接下來讀取M*N行輸入，輸入可以分為M等分，每等分可以表示為sec_1,sec_2,...,sec_M，其中第i部分表示為sec_i，每等分有N行，每行可以表示為line_1, line_2,..., line_N，其中第k行表示為line_k，每行有2個數字c和d
+9.每一行輸入完畢時，將line_k的c加入L_k裡，並將其指標加入expire_(i+d)裡，例如現在輸入的是第i部分的第k行，就將該行的第一個數字加入L_k，並將其指標加入expire_(i+d)，L_k中的數字必須從小排到大，例如原本L_k中有1,2,4三個元素，要插入的數字為3，則將其插入到2的下一項，4的上一項，如果加入的數字是L_k的第一項，則call updatePrice，並傳入L_k的第一項、第二項及第k個被建立的campany，如果要插入的數字是該L_k中的第一個數字，則傳入L_k的第一項、null與第k個被建立的campany
+10.每一部分輸入完畢時，從sub最多的公司開始，檢查其price是否小於1.中輸入的C，依照sub的數量一一檢查，找出price小於C中sub最大的一間，並print出該sub
+11.每天結束時從L_k中刪掉與當天相對應的expire中的Node
