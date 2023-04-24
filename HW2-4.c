@@ -129,6 +129,18 @@ void updatePrice(price *L_new, price *L_old, company *c) {
     }
 }
 
+void findPosition(price *root, int p) {
+    if (root->price >= p) {
+        insertPrice(root, p);
+    }
+    else if (root->next != 0) {
+        findPosition(root->next, p);
+    }
+    else {
+        root->next
+    }
+}
+
 int main() {
     int N, M, C;
     scanf("%d %d %d", &N, &M, &C);
@@ -157,10 +169,21 @@ int main() {
     mergeSort(arr_C, 0, N - 1);
 
     //讀取第二部分輸入
-    for (size_t i = 0; i < M; i++) {
+
+    company **companies = (company **)malloc(N * sizeof(company *));
+    company **expire_list = (company **)malloc(M * sizeof(company *));
+
+    for (size_t j = 0; j < N; j++) {
+        int c, d;
+        scanf("%d %d", &c, &d);
+        companies[j] = (company *)malloc(sizeof(company));
+        //
+    }
+    for (size_t i = 1; i < M; i++) {
         for (size_t j = 0; j < N; j++) {
             int c, d;
             scanf("%d %d", &c, &d);
+            findPosition(companies[j], c);
         }
     }
 
