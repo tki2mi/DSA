@@ -173,7 +173,7 @@ position *navigate_inv(position *root, int x, int y) {
     return dstn;
 }
 
-void rotate(position *root1, position *center, position *center2, int lk) {
+void rotate(position **root1, position *center, position *center2, int lk) {
     position *pos_tmp1 = center;
     position *pos_tmp2 = center2;
     position *temp = NULL;
@@ -182,8 +182,8 @@ void rotate(position *root1, position *center, position *center2, int lk) {
         pos_tmp2 = pos_tmp2->left->top;
     }
 
-    if (pos_tmp1 == root1) {
-        root1 = pos_tmp2;
+    if (pos_tmp1 == *root1) {
+        *root1 = pos_tmp2;
     }
     pos_tmp1->left->right = pos_tmp2; // pos1的左邊的右邊是pos2
     pos_tmp2->left->right = pos_tmp1; // pos2的左邊的右邊是pos1
@@ -433,7 +433,7 @@ int main() {
         findByRank(root, rank, pos_rkr, rkr[i], n, m);
         center = navigate(root, pos_rkr[0], pos_rkr[1]);
         center2 = navigate_inv(root_inv, pos_rkr[0], pos_rkr[1]);
-        rotate(root, center, center2, lkr[i]);
+        rotate(&root, center, center2, lkr[i]);
     }
 
     for (size_t i = 0; i < n; i++) {

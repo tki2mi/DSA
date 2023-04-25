@@ -19,7 +19,7 @@ typedef struct company {
     int sub;
 } company;
 
-//刪除price節點
+// 刪除price節點
 void removePrice(price *p) {
     if (p->prev != NULL) {
         p->prev->next = p->next;
@@ -29,16 +29,35 @@ void removePrice(price *p) {
     }
 }
 
-//在p節點的前面插入一個price節點
-void insertPrice(price *p, int priceValue) {
-    price *new = (price *)malloc(sizeof(price));
-    new->prev = p->prev;
-    new->next = p;
-    p->prev->next = new;
-    p->prev = new;
+// 如果引入的expire node為null，則取代它，否則把引入的expire node當作下家，自己取代他成為head
+expire *insertExpire(price *p, expire *ex) {
+    expire *new = (expire *)malloc(sizeof(expire));
+    new->next = NULL;
+    new->delete = p;
+    if (ex == NULL) {
+        ex = new;
+    }
+    else {
+        new->next = ex;
+    }
+    return new;
 }
 
-//將自己的top、top的top...的sub全都+1
+// 在p節點的前面插入一個price節點
+price *insertPrice(price *p, int priceValue, expire **ex) {
+    price *new = (price *)malloc(sizeof(price));
+    new->price = priceValue;
+    new->prev = p->prev;
+    new->next = p;
+    if (p->prev != NULL) {
+        p->prev->next = new;
+    }
+    p->prev = new;
+    *ex = insertExpire(new, *ex);
+    return new;
+}
+
+// 將自己的top、top的top...的sub全都+1
 void subCal(company *c_bot) {
     if (c_bot->top != NULL) {
         c_bot->top->sub += 1;
@@ -125,27 +144,37 @@ void updatePrice(price *L_new, price *L_old, company *c) {
     c->price += delta;
 
     if (c->top != NULL) {
-        updatePrice(L_new, L_old, c->top->price);
+        updatePrice(L_new, L_old, c->top);
     }
 }
 
-void findPosition(price *root, int p) {
+price *findPosition(price *root, int p, expire **ex) {
     if (root->price >= p) {
-        insertPrice(root, p);
+        return (insertPrice(root, p, ex));
     }
-    else if (root->next != 0) {
-        findPosition(root->next, p);
+    price *tmp = root;
+    while (root->price <= p) {
+        if (root->next != NULL) {
+            root = root->next;
+        }
+        else {
+            price *new = (price *)malloc(sizeof(price));
+            new->price = p;
+            new->prev = root;
+            root->next = new;
+            *ex = insertExpire(new, *ex);
+            return tmp;
+        }
     }
-    else {
-        root->next
-    }
+    insertPrice(root, p, ex);
+    return tmp;
 }
 
 int main() {
     int N, M, C;
     scanf("%d %d %d", &N, &M, &C);
 
-    //建立儲存company的array
+    // 建立儲存company的array
     company *arr_C[N];
 
     // 建立第一個 company
@@ -168,29 +197,30 @@ int main() {
 
     mergeSort(arr_C, 0, N - 1);
 
-    //讀取第二部分輸入
+    // 讀取第二部分輸入
 
-    company **companies = (company **)malloc(N * sizeof(company *));
-    company **expire_list = (company **)malloc(M * sizeof(company *));
+    price *price_l[N];
+    expire **expire_arr = (expire **)calloc(M, sizeof(expire *)); // 建立 expire array
 
     for (size_t j = 0; j < N; j++) {
         int c, d;
         scanf("%d %d", &c, &d);
-        companies[j] = (company *)malloc(sizeof(company));
-        //
+        price_l[j] = (price *)malloc(sizeof(price));
+        price_l[j]->price = c;
+        expire_arr[d] = insertExpire(price_l[j], expire_arr[d]);
     }
     for (size_t i = 1; i < M; i++) {
         for (size_t j = 0; j < N; j++) {
             int c, d;
             scanf("%d %d", &c, &d);
-            findPosition(companies[j], c);
+            price_l[j] = findPosition(price_l[j], c, &expire_arr[i + d]);
+            expire_arr[d] = insertExpire(price_l[j], expire_arr[i + d]);
         }
     }
 
-    //釋放記憶體
+    // 釋放記憶體
     for (int i = 0; i < N; i++) {
         free(arr_C[i]);
     }
-    free(arr_C);
     return 0;
 }
