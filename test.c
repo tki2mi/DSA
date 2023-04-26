@@ -38,10 +38,14 @@ price *findPosition(price *root, int p) {
     }
 }
 
-void ffff(price **p) {
-    price *new = (price *)malloc(sizeof(price));
-    new->price = 235423424;
-    *p = new;
+// 刪除price節點
+void removePrice(price *p) {
+    if (p->prev != NULL) {
+        p->prev->next = p->next;
+    }
+    if (p->next != NULL) {
+        p->next->prev = p->prev;
+    }
 }
 
 int main() {
@@ -51,7 +55,9 @@ int main() {
     p2->price = 3234;
     price *p3 = (price *)malloc(sizeof(price));
     p3->price = 334;
-    expire **exp = (expire **)calloc(3, sizeof(expire));
-    ffff(&p1);
+    price **price_l = (price **)calloc(2, sizeof(price *));
+    price_l[0] = p1;
+    removePrice(p1);
+
     return 0;
 }

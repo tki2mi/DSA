@@ -15,7 +15,7 @@ typedef struct expire {
 typedef struct company {
     struct company *top;
     struct company *bot;
-    int price;
+    long long int price;
     int sub;
 } company;
 
@@ -43,16 +43,16 @@ expire *insertExpire(price *p, expire *ex) {
     return new;
 }
 
-// 在p節點的前面插入一個price節點
+// 在p節點的後面插入一個price節點
 price *insertPrice(price *p, int priceValue, expire **ex) {
     price *new = (price *)malloc(sizeof(price));
     new->price = priceValue;
-    new->prev = p->prev;
-    new->next = p;
-    if (p->prev != NULL) {
-        p->prev->next = new;
+    new->prev = p;
+    new->next = p->next;
+    if (p->next != NULL) {
+        p->next->prev = new;
     }
-    p->prev = new;
+    p->next = new;
     *ex = insertExpire(new, *ex);
     return new;
 }
@@ -151,7 +151,7 @@ void updatePrice(price *L_new, price *L_old, company *c) {
 price *findPosition(price *root, int p, expire **ex) {
     price *tmp = NULL;
     if (root->price >= p) {
-        tmp = insertPrice(root, p, ex);
+        tmp = insertPrice(root->prev, p, ex);
         return (tmp);
     }
     tmp = root;
@@ -168,25 +168,27 @@ price *findPosition(price *root, int p, expire **ex) {
             return tmp;
         }
     }
-    insertPrice(root, p, ex);
+    insertPrice(root->prev, p, ex);
     return tmp;
 }
 
-int main() {
+signed main() {
     int N, M, C;
     scanf("%d %d %d", &N, &M, &C);
 
     // 建立儲存company的array
     company *arr_C[N];
+    company **companies = (company **)malloc(N * sizeof(company *));
 
     for (int i = 0; i < N; i++) {
         // 建立新的 company
         company *c = (company *)malloc(sizeof(company));
         c->top = NULL;
         c->bot = NULL;
-        c->sub = 0;
+        c->sub = 1;
         c->price = 0;
         arr_C[i] = c;
+        companies[i] = c;
     }
 
     for (int i = 1; i < N; i++) {
@@ -196,53 +198,46 @@ int main() {
         connectTop(arr_C[x - 1], arr_C[i]);
     }
 
+    // 將公司依照子公司數量排列
+    mergeSort(arr_C, 0, N - 1);
+
     // 讀取第二部分輸入
 
-    price *price_l[N];
+    price *price_l = (price *)malloc(N * sizeof(price));
     expire **expire_arr = (expire **)calloc(M, sizeof(expire *)); // 建立 expire array
     price *dummy = (price *)calloc(1, sizeof(price));             // 在updatePrice的時候用來當old price
     price *price_tmp;
 
     for (size_t j = 0; j < N; j++) {
-        int c, d;
-        scanf("%d %d", &c, &d);
-        price_l[j] = (price *)malloc(sizeof(price));
-        price_l[j]->price = c;                                   // 更新最低價
-        expire_arr[d] = insertExpire(price_l[j], expire_arr[d]); // 更新過期
-        updatePrice(price_l[j], dummy, arr_C[j]);
+        price_l[j].next = NULL;
+        price_l[j].prev = NULL;
+        price_l[j].price = -1 * j;
     }
-    for (size_t i = 1; i < M; i++) {
+    for (size_t i = 0; i < M; i++) {
         for (size_t j = 0; j < N; j++) {
             int c, d;
             scanf("%d %d", &c, &d);
-            price_tmp = price_l[j];
-            price_l[j] = findPosition(price_l[j], c, &expire_arr[i + d]);
-            if (price_tmp != price_l[j]) {
-                updatePrice(price_l[j], price_tmp, arr_C[j]);
+            price_tmp = price_l[j].next;
+            price_l[j] = *findPosition(&price_l[j], c, &expire_arr[i + d]);
+            if (price_tmp != price_l[j].next) {
+                updatePrice(price_l[j].next, price_tmp, companies[j]);
             }
-            expire_arr[d] = insertExpire(price_l[j], expire_arr[i + d]);
         }
-    }
-
-    // 將公司依照子公司數量排列
-    mergeSort(arr_C, 0, N - 1);
-
-    // 開始計算每天可以買到的最多瓜數
-    for (size_t i = 0; i < M; i++) {
         for (size_t j = 0; j < N; j++) {
             if (arr_C[j]->price <= C) {
-                printf("%d", arr_C[j]->price);
+                printf("%d\n", arr_C[j]->sub);
                 break;
+            }
+            else if (j == N - 1) {
+                printf("0\n", arr_C[j]->sub);
             }
         }
-        while (1) {
+        while (expire_arr[i] != NULL) {
+            if (expire_arr[i]->delete->prev->prev == NULL) {
+                updatePrice(expire_arr[i]->delete->next, expire_arr[i]->delete, companies[-1 * (expire_arr[i]->delete->prev->price)]);
+            }
             removePrice(expire_arr[i]->delete);
-            if (expire_arr[i]->next != NULL) {
-                expire_arr[i] = expire_arr[i]->next;
-            }
-            else {
-                break;
-            }
+            expire_arr[i] = expire_arr[i]->next;
         }
     }
 
